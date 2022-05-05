@@ -20,6 +20,8 @@
         <module>look-gateway</module>
         <module>look-video</module>
         <module>look-chat</module>
+        <module>look-admin</module>
+        <module>look-member/look-member-api</module>
     </modules>
 
     <packaging>pom</packaging>

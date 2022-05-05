@@ -10,14 +10,14 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * swagger2配置类
- * 1. 在 look.swagger2.enabled=true时加载
+ * swagger配置类
+ * 1. 在 look.swagger.enabled=true时加载
  *
  * @author whoiszxl
  * @date 2021/11/30
  */
 @Configuration
-@ConditionalOnProperty(name = "look.swagger2.enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = "look.swagger.enabled", havingValue = "true", matchIfMissing = true)
 @EnableSwagger2
 @EnableOpenApi
 @Import({BeanValidatorPluginsConfiguration.class})

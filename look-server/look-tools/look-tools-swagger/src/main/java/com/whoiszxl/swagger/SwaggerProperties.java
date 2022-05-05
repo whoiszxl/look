@@ -16,7 +16,7 @@ import java.util.Map;
  * @date 2021/11/30
  */
 
-@ConfigurationProperties(prefix = "look.swagger2")
+@ConfigurationProperties(prefix = "look.swagger")
 @Data
 public class SwaggerProperties {
 

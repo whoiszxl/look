@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>com.whoiszxl</groupId>
-            <artifactId>zz-tools-core</artifactId>
+            <artifactId>look-tools-core</artifactId>
             <version>1.0.0</version>
         </dependency>
 

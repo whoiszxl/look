@@ -7,17 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="C:/coding/apache-maven-3.6.3/resp/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" />
+          <entry name="C:/IDEA/apache-maven-3.5.3/repo/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" />
         </processorPath>
-        <module name="look-member" />
-        <module name="look-video" />
         <module name="look-tools-core" />
-        <module name="look-tools-lock" />
         <module name="look-tools" />
-        <module name="look-tools-dozer" />
+        <module name="look-member-api" />
         <module name="look-gateway" />
         <module name="look-tools-logger" />
         <module name="look-tools-swagger" />
+        <module name="look-chat" />
+        <module name="look-video" />
+        <module name="look-member-web" />
+        <module name="look-admin" />
+        <module name="look-tools-lock" />
+        <module name="look-tools-dozer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,8 +29,12 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="look-admin" options="-parameters" />
+      <module name="look-chat" options="-parameters" />
       <module name="look-gateway" options="-parameters" />
-      <module name="look-member" options="-parameters" />
+      <module name="look-member" options="" />
+      <module name="look-member-api" options="-parameters" />
+      <module name="look-member-web" options="-parameters" />
       <module name="look-tools" options="-parameters" />
       <module name="look-tools-core" options="-parameters" />
       <module name="look-tools-dozer" options="-parameters" />
