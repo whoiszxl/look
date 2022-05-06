@@ -48,7 +48,8 @@ CREATE TABLE `ums_member_info`(
     `updated_by`                varchar(64) NOT NULL COMMENT '更新者',
     `created_at`                datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`                datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    PRIMARY KEY (`member_id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uni_idx_member_id` (`member_id`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '会员详情表';
 
 
@@ -64,7 +65,7 @@ CREATE TABLE `ums_member_coin`(
     `updated_by`                varchar(64) NOT NULL COMMENT '更新者',
     `created_at`                datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`                datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    PRIMARY KEY (`member_id`)
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '币余额表';
 
 
@@ -81,7 +82,7 @@ CREATE TABLE `ums_member_like`(
     `updated_by`                varchar(50) NOT NULL COMMENT '更新者',
     `created_at`                datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`                datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`video_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '点赞表';
 
 DROP TABLE IF EXISTS `ums_member_collection`;
@@ -98,7 +99,7 @@ CREATE TABLE `ums_member_collection`(
     `updated_by`                varchar(50) NOT NULL COMMENT '更新者',
     `created_at`                datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`                datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`video_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '收藏表';
 
 
@@ -150,6 +151,7 @@ CREATE TABLE `ums_member_attention`(
     `id`                        bigint(11) NOT NULL COMMENT '主键ID',
     `member_id`                 bigint(11) NOT NULL COMMENT '用户ID',
     `attention_id`              bigint(11) NOT NULL COMMENT '被关注者ID',
+    `group_id`                  bigint(11) NOT NULL COMMENT '关注分组表主键ID',
     PRIMARY KEY (`id`),
     UNIQUE KEY `uni_idx_member_id` (`member_id`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '会员关注表';

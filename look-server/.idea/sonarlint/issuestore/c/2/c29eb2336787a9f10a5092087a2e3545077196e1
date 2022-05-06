@@ -1,0 +1,7 @@
+
+X
+java:S1612g"=Replace this lambda with method reference 'Objects::nonNull'.(ÒàÍ€øÿÿÿÿ
+U
+java:S1611h":Remove the parentheses around the "sourceObject" parameter(å»‹Õøÿÿÿÿ
+U
+java:S1611r":Remove the parentheses around the "sourceObject" parameter(ŒÈÏ’ùÿÿÿÿ

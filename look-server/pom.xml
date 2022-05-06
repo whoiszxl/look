@@ -22,6 +22,7 @@
         <module>look-chat</module>
         <module>look-admin</module>
         <module>look-member/look-member-api</module>
+        <module>look-file</module>
     </modules>
 
     <packaging>pom</packaging>

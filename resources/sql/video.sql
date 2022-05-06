@@ -50,8 +50,8 @@ CREATE TABLE `vms_video_comment`(
 
 DROP TABLE IF EXISTS `vms_tag`;
 CREATE TABLE `vms_tag`(
-    `id`                        bigint(11) NOT NULL COMMENT '背景音乐主键ID',
-    `tag_name`                  varchar(100) NOT NULL COMMENT '音乐名',
+    `id`                        bigint(11) NOT NULL COMMENT '主键ID',
+    `tag_name`                  varchar(100) NOT NULL COMMENT '标签名',
     `version`                   bigint(20) unsigned NOT NULL DEFAULT '1' COMMENT '乐观锁',
     `status`                    tinyint(3) DEFAULT 0 COMMENT '业务状态',
     `is_deleted`                tinyint(3) DEFAULT 0 COMMENT '逻辑删除 1: 已删除, 0: 未删除',
@@ -134,5 +134,25 @@ CREATE TABLE `vms_video_dynamic`(
     `updated_by`                varchar(50) NOT NULL COMMENT '更新者',
     `created_at`                datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`                datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`video_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '视频计数表';
+
+DROP TABLE IF EXISTS `rms_banner`;
+CREATE TABLE `rms_banner` (
+    `id`                        bigint(10) NOT NULL AUTO_INCREMENT COMMENT '自增主键ID',
+    `name`                      varchar(100) DEFAULT '' COMMENT '轮播图名称',
+    `type`                      tinyint(1) DEFAULT '0' COMMENT '轮播位置:0->PC首页轮播;1->app首页轮播 2->app导航小组件',
+    `biz_id`                    bigint(10) NOT NULL COMMENT '业务ID: spu_id or other',
+    `pic`                       varchar(255) DEFAULT '' COMMENT '图片地址',
+    `status`                    int(1) DEFAULT '1' COMMENT '上下线状态:0->下线;1->上线',
+    `click_count`               int(11) DEFAULT '0' COMMENT '点击数',
+    `url`                       varchar(255) DEFAULT '' COMMENT '链接地址',
+    `sort`                      int(3) DEFAULT '0' COMMENT '排序',
+    `version`                   bigint(20) unsigned NOT NULL DEFAULT '1' COMMENT '乐观锁',
+    `is_deleted`                tinyint(3) DEFAULT 0 COMMENT '逻辑删除 1: 已删除， 0: 未删除',
+    `created_by`                varchar(50) NOT NULL DEFAULT '' COMMENT '创建者',
+    `updated_by`                varchar(50) NOT NULL DEFAULT '' COMMENT '更新者',
+    `created_at`                datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updated_at`                datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+	PRIMARY KEY (`id`)
+) ENGINE = InnoDB CHARSET = utf8mb4 COMMENT '轮播表';

@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>look-video</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>look-video-api</module>
+        <module>look-video-web</module>
+    </modules>
 
 
 </project>

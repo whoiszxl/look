@@ -8,7 +8,9 @@
         <option value="$PROJECT_DIR$/look-tools/look-tools-lock/pom.xml" />
         <option value="$PROJECT_DIR$/look-tools/look-tools-logger/pom.xml" />
         <option value="$PROJECT_DIR$/look-tools/look-tools-swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/look-admin/pom.xml" />
         <option value="$PROJECT_DIR$/look-chat/pom.xml" />
+        <option value="$PROJECT_DIR$/look-file/look-file-api/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

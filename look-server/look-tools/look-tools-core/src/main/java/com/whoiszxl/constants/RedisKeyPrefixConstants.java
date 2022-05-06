@@ -17,5 +17,7 @@ public class RedisKeyPrefixConstants {
     public static final Integer MEMBER_BLOOM_REGISTER_ID_SIZE = 100 * 10000;
     public static final double MEMBER_BLOOM_REGISTER_ID_FPP = 0.03;
 
+    public static final String APP_BANNER = "app:banner";
+
 
 }
