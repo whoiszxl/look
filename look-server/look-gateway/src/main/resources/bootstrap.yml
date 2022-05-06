@@ -1,0 +1,56 @@
+server:
+  port: 80
+spring:
+  application:
+    name: look-gateway
+  cloud:
+    nacos:
+      server-addr: 212.129.223.197:8848
+      config:
+        server-addr: 212.129.223.197:8848
+        file-extension: yaml
+
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: look-member-web_router
+          uri: lb://look-member-web   # 转发到那个目的地
+          predicates:
+            - Path=/member/**
+          filters:
+            - StripPrefix=1 # 当前端访问/member/login，网关转发会将member自动的去掉，成访问 /login 路径。
+
+        - id: look-video-web_router
+          uri: lb://look-video-web
+          predicates:
+            - Path=/video/**
+          filters:
+            - StripPrefix=1
+
+        - id: look-admin-web_router
+          uri: lb://look-admin-web
+          predicates:
+            - Path=/admin/**
+          filters:
+            - StripPrefix=1
+
+        - id: look-file-web_router
+          uri: lb://look-file-web
+          predicates:
+            - Path=/file/**
+          filters:
+            - StripPrefix=1
+
+        - id: test_router
+          uri: http://www.aliyun.com
+          predicates:
+            - Path=/activity
