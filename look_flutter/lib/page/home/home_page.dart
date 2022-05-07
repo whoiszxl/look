@@ -72,7 +72,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       backgroundColor: ColorManager.white,
       appBar: AppBar(
         key: _appBarKey,
-        backgroundColor: ColorManager.main,
         iconTheme: const IconThemeData(),
         elevation: 0.0,
         titleSpacing: 0.0,

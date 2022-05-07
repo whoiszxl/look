@@ -13,11 +13,11 @@ class SearchBar extends StatelessWidget {
     // 装饰盒（`DecoratedBox`）组件，在子组件绘画之前或之后绘制装饰的组件。
     return DecoratedBox(
       // 装饰（`decoration`）属性，具体怎么画装饰。
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             colors: <Color>[
-              ColorManager.main, Color.fromARGB(255,238,78,20)
+              Theme.of(context).scaffoldBackgroundColor, Theme.of(context).scaffoldBackgroundColor
             ],
           )
       ),

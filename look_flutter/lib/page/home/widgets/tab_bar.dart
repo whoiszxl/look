@@ -23,11 +23,11 @@ class _HomeTabBarState extends State<HomeTabBar> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             colors: <Color>[
-              ColorManager.main, Color.fromARGB(255,238,78,20)
+              Theme.of(context).scaffoldBackgroundColor, Theme.of(context).scaffoldBackgroundColor
             ],
           )
       ),

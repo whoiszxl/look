@@ -40,7 +40,7 @@ public class VideoSaveCommand implements Serializable {
     private String videoUrl;
 
     @ApiModelProperty("视频秒数")
-    private Float seconds;
+    private Integer seconds;
 
     @ApiModelProperty("视频宽度")
     private Integer width;

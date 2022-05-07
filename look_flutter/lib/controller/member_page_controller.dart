@@ -26,7 +26,7 @@ class MemberPageController extends GetxController {
     if(token != null && token.isNotEmpty) {
       SPUtil.set(SPKeys.token, token);
       Get.offNamed(Routers.main);
-      mainPageController.selectIndexBottomBarMainPage(4);
+      mainPageController.selectIndexBottomBarMainPage(3);
       return true;
     }
     return false;

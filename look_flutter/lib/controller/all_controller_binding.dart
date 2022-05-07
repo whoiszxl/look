@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:look_flutter/controller/detail_page_controller.dart';
 
 import 'language_controller.dart';
 import 'main_page_controller.dart';
@@ -15,5 +16,6 @@ class AllControllerBinding implements Bindings {
     Get.lazyPut<LanguageController>(() => LanguageController());
     Get.lazyPut<RecommendPageController>(() => RecommendPageController());
     Get.lazyPut<MemberPageController>(() => MemberPageController());
+    Get.lazyPut<DetailPageController>(() => DetailPageController());
   }
 }

@@ -12,10 +12,13 @@ class ColorManager{
   static const Color white70 = Colors.white70;
   static const Color grey = Colors.grey;
   static const Color black = Colors.black;
+  static const Color black54 = Colors.black54;
+  static const Color black87 = Colors.black87;
   static const Color bg = Colors.white60;
   static const Color loginMainColor = main;
   static const Color loginSecondColor = Color(0xFFF1E6FF);
   static const Color fontGrey = Color(0xff666666);
+  static const Color greyBg = Color(0xfff5f7fa);
 
   static const Color line = Colors.black12;
   static const Color transparent = Colors.transparent;

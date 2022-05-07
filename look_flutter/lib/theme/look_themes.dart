@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:look_flutter/res/colors_manager.dart';
 
 ///通过 Get.changeTheme(LookThemes.black); 的方式进行主题选择
 class LookThemes {
+
+  static final defaultTheme = ThemeData.light().copyWith(
+      scaffoldBackgroundColor: ColorManager.main,
+      appBarTheme: const AppBarTheme(
+          backgroundColor: ColorManager.main,
+          textTheme: TextTheme(headline6: TextStyle(color: Colors.white, fontSize: 30))),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.deepOrange))));
+
   static final green = ThemeData.light().copyWith(
     scaffoldBackgroundColor: Colors.green,
     appBarTheme: const AppBarTheme(

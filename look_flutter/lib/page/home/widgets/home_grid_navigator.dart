@@ -22,14 +22,16 @@ class HomeGridNavigator extends StatelessWidget {
 
     var tempIndex = -1;
     return Container(
-      margin: const EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 0),
       height: gridHeight,
       width: gridWidth,
-      padding: const EdgeInsets.all(3),
+      padding: const EdgeInsets.all(2),
 
       child: GridView.count(
-        physics: const NeverScrollableScrollPhysics(),
-        crossAxisCount: 5,
+        physics: const AlwaysScrollableScrollPhysics(),
+        mainAxisSpacing: 1,
+        crossAxisCount: 6,
+
         padding: const EdgeInsets.all(1),
         children: navigatorList.map((item) {
           tempIndex++;

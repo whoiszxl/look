@@ -1,6 +1,8 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:look_flutter/entity/response/banner_response.dart';
+import 'package:look_flutter/entity/response/video_response.dart';
 import 'package:look_flutter/service/home_api_service.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -58,5 +60,33 @@ class RecommendPageController extends GetxController {
   }
 
 
+
+
+
+  final List<VideoEntity> videoList = <VideoEntity>[].obs;
+  int page = 1;
+  final int size = 5;
+
+  Future<bool> getRecommendVideoList(RefreshController refreshController) async {
+    debugPrint("加载了");
+    var result = await Get.find<HomeApiService>().recommendVideoList(page, size);
+    if(result != null) {
+      videoList.addAll(result.records);
+      page++;
+      refreshController.loadComplete();
+      return true;
+    }else {
+      refreshController.loadNoData();
+      return false;
+    }
+  }
+
+  void refreshRecommendVideoList(RefreshController refreshController) async {
+    debugPrint("刷新了");
+    page = 1;
+    videoList.clear();
+    await getRecommendVideoList(refreshController);
+    refreshController.refreshCompleted();
+  }
 
 }

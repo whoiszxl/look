@@ -13,7 +13,7 @@ class HomeBanner extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final bool showPagination;
 
-  const HomeBanner(this.bannerList, {Key key, this.bannerHeight = 160, this.bannerWidth = 380, this.padding, this.showPagination = true}) : super(key: key);
+  const HomeBanner(this.bannerList, {Key key, this.bannerHeight = 160, this.bannerWidth = 410, this.padding, this.showPagination = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

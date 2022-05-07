@@ -58,4 +58,11 @@ public interface VideoService extends IService<Video> {
      * @return
      */
     IPage<VideoResponse> timeline(MemberTimelineQuery memberTimelineQuery);
+
+    /**
+     * 指定ID查询视频详情
+     * @param videoId
+     * @return
+     */
+    VideoResponse getVideoById(String videoId);
 }

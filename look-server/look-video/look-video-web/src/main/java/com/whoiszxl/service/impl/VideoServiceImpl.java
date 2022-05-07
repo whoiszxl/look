@@ -2,6 +2,7 @@ package com.whoiszxl.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.whoiszxl.bean.PageQuery;
 import com.whoiszxl.cqrs.command.LikeCommand;
@@ -21,7 +22,9 @@ import com.whoiszxl.strategy.LikeFactory;
 import com.whoiszxl.utils.AuthUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -102,9 +105,6 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
 
     @Override
     public IPage<VideoResponse> recommendFeedList(PageQuery pageQuery) {
-        Long memberId = AuthUtils.getMemberId();
-        Long finalMemberId = memberId;
-
         //TODO 推荐实现
         LambdaQueryWrapper<Video> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.orderByDesc(Video::getCreatedAt);
@@ -128,10 +128,6 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
             videoResponse.setLickCount(likeFactory.getLikeStrategy(LikeTypeEnum.VIDEO.getCode()).getLikeCount(video.getId()));
             videoResponse.setCommentCount(likeFactory.getLikeStrategy(LikeTypeEnum.COMMENT.getCode()).getLikeCount(video.getId()));
             videoResponse.setShareCount(567);
-
-            //设置是否点赞过
-            Integer hasLiked = likeFactory.getLikeStrategy(LikeTypeEnum.VIDEO.getCode()).isLike(video.getId(), finalMemberId);
-            videoResponse.setHasLiked(hasLiked);
 
             return videoResponse;
         });
@@ -171,5 +167,27 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
 
             return videoResponse;
         });
+    }
+
+    @Override
+    public VideoResponse getVideoById(String videoId) {
+        Video video = this.getOne(Wrappers.<Video>lambdaQuery().eq(Video::getId, videoId));
+
+        List<Long> params = new ArrayList<>();
+        params.add(video.getMemberId());
+        List<MemberDTO> memberDTOList = memberApiClient.findMemberInfoByIds(params);
+
+        VideoResponse videoResponse = dozerUtils.map(video, VideoResponse.class);
+
+        MemberDTO memberDTO = memberDTOList.get(0);
+        videoResponse.setMemberId(memberDTO.getId());
+        videoResponse.setAvatar(memberDTO.getAvatar());
+        videoResponse.setNickname(memberDTO.getNickname());
+
+        videoResponse.setLickCount(likeFactory.getLikeStrategy(LikeTypeEnum.VIDEO.getCode()).getLikeCount(video.getId()));
+        videoResponse.setCommentCount(likeFactory.getLikeStrategy(LikeTypeEnum.COMMENT.getCode()).getLikeCount(video.getId()));
+        videoResponse.setShareCount(567);
+
+        return videoResponse;
     }
 }

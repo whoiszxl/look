@@ -5795,7 +5795,7 @@ phone</ColNames>
     <column id="1250" parent="310" name="seconds">
       <Position>8</Position>
       <Comment>视频秒数</Comment>
-      <DataType>float(6,2 digit)|0s</DataType>
+      <DataType>int(7)|0s</DataType>
     </column>
     <column id="1251" parent="310" name="width">
       <Position>9</Position>

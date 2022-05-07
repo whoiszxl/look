@@ -53,6 +53,13 @@ public class VideoApiController {
         return ResponseResult.buildSuccess(videoPage);
     }
 
+    @GetMapping("/{videoId}")
+    @ApiOperation(value = "指定ID查询视频", notes = "指定ID查询视频", response = VideoResponse.class)
+    public ResponseResult<VideoResponse> getVideoById(@PathVariable String videoId) {
+        VideoResponse videoResponse = videoService.getVideoById(videoId);
+        return ResponseResult.buildSuccess(videoResponse);
+    }
+
     @PostMapping("/timeline/list")
     @ApiOperation(value = "分页查询指定用户的视频列表", notes = "分页查询指定用户的视频列表", response = VideoResponse.class)
     public ResponseResult<IPage<VideoResponse>> timeline(@RequestBody MemberTimelineQuery memberTimelineQuery) {

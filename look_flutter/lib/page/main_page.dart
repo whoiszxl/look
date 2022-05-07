@@ -74,14 +74,14 @@ class _MainPageState extends State<MainPage> {
               activeIcon: const Icon(Icons.home),
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.category_outlined),
+              icon: const Icon(Icons.dynamic_feed_outlined),
               label: 'dync'.tr,
-              activeIcon: const Icon(Icons.category),
+              activeIcon: const Icon(Icons.dynamic_feed),
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.shopping_cart_outlined),
+              icon: const Icon(Icons.shopping_bag_outlined),
               label: 'mall'.tr,
-              activeIcon: const Icon(Icons.shopping_cart),
+              activeIcon: const Icon(Icons.shopping_bag),
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.person_outlined),

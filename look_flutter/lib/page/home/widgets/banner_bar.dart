@@ -27,14 +27,14 @@ class BannerBar extends StatelessWidget {
                 )
             ),
             child: Container(
-              height: 145.0,
+              height: 145,
             ),
           ),
         ),
         Align(
           alignment: Alignment.center,
           child: Container(
-            padding: const EdgeInsets.only(top: 10, bottom: 15),
+            padding: const EdgeInsets.only(top: 10, bottom: 8),
             child: HomeBanner(bannerList),
           ),
         ),

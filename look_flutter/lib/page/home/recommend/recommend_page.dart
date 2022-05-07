@@ -1,10 +1,14 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:look_flutter/controller/recommend_page_controller.dart';
 import 'package:look_flutter/entity/response/banner_response.dart';
+import 'package:look_flutter/entity/response/video_response.dart';
 import 'package:look_flutter/page/home/widgets/banner_bar.dart';
 import 'package:look_flutter/page/home/widgets/home_grid_navigator.dart';
-import 'package:look_flutter/theme/look_themes.dart';
+import 'package:look_flutter/page/home/widgets/recommend_video_card.dart';
 import 'package:look_flutter/utils/loading_util.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -31,6 +35,7 @@ class _RecommendPageState extends State<RecommendPage> with TickerProviderStateM
   @override
   void initState() {
     _recommendPageController.refreshBannerResponse(_refreshController);
+    _recommendPageController.getRecommendVideoList(_refreshController);
     super.initState();
   }
 
@@ -54,10 +59,10 @@ class _RecommendPageState extends State<RecommendPage> with TickerProviderStateM
       enablePullDown: true,
       onRefresh: () {
         _recommendPageController.refreshBannerResponse(_refreshController);
-
+        _recommendPageController.refreshRecommendVideoList(_refreshController);
       },
       onLoading: () {
-        _recommendPageController.refreshBannerResponse(_refreshController);
+        _recommendPageController.getRecommendVideoList(_refreshController);
       },
       child: _build(context),
     );
@@ -80,47 +85,12 @@ class _RecommendPageState extends State<RecommendPage> with TickerProviderStateM
 
               //nav组件
               SizedBox(
-                height: 168,
-                child: HomeGridNavigator(navigatorList: navList, gridHeight: 150, gridWidth: _screenWidth),
+                height: 80,
+                child: HomeGridNavigator(navigatorList: navList, gridHeight: 75, gridWidth: _screenWidth),
               ),
 
-
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Column(
-                  children: [
-                    InkWell(
-                      child: Text("点击1",style: TextStyle(color: Theme.of(context).scaffoldBackgroundColor),),
-                      onTap: () {
-                        Get.changeTheme(LookThemes.black);
-                      },
-                    ),
-
-
-                    InkWell(
-                      child: Text("点击2",style: TextStyle(color: Theme.of(context).scaffoldBackgroundColor),),
-                      onTap: () {
-                        Get.changeTheme(LookThemes.yellow);
-                      },
-                    ),
-
-                    InkWell(
-                      child: Text("点击3",style: TextStyle(color: Theme.of(context).scaffoldBackgroundColor),),
-                      onTap: () {
-                        Get.changeTheme(LookThemes.red);
-                      },
-                    ),
-
-                    InkWell(
-                      child: Text("点击切换繁体",style: TextStyle(color: Theme.of(context).scaffoldBackgroundColor)),
-                      onTap: () {
-                        var locale = const Locale('zh', 'HK');
-                        Get.updateLocale(locale);
-                      },
-                    )
-                  ],
-                ),
-              )
+              //推荐视频列表
+              _videoList(_recommendPageController.videoList),
 
             ],
           ),
@@ -129,6 +99,30 @@ class _RecommendPageState extends State<RecommendPage> with TickerProviderStateM
 
     });
   }
+
+
+  ///视频列表
+  _videoList(List<VideoEntity> videoList) {
+    return StaggeredGridView.countBuilder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics (),
+      padding: const EdgeInsets.only(top: 10, left: 4, right: 4),
+      crossAxisCount: 2,
+      itemCount: videoList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return RecommendVideoCard(videoEntity: videoList[index]);
+      },
+
+      staggeredTileBuilder: (int index) {
+        return const StaggeredTile.fit(1);
+      },
+    );
+  }
+
+
+
   @override
   bool get wantKeepAlive => true;
+
+
 }

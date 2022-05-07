@@ -153,3 +153,13 @@ Qlook-member/look-member-api/src/main/java/com/whoiszxl/feign/MemberApiClient.ja
 Wlook-video/look-video-web/src/main/java/com/whoiszxl/service/impl/VideoServiceImpl.java,4\3\43bb35bea6ea55bf24571a939777c7ed7de6badd
 y
 Ilook-member/look-member-api/src/main/java/com/whoiszxl/dto/MemberDTO.java,7\9\79ed318a3194bedd5459aa698330892ab73e1db7
+€
+Plook-member/look-member-web/src/main/java/com/whoiszxl/config/MyBatisConfig.java,f\2\f2593a987a60e339761bb40be9d318175cbd1141
+Š
+Zlook-member/look-member-web/src/main/java/com/whoiszxl/config/EntityMetaObjectHandler.java,8\f\8f056b4f887df8c1a223069a7e8cd4969faff6d0
+†
+Vlook-member/look-member-web/src/main/java/com/whoiszxl/client/MemberApiClientImpl.java,e\7\e72104c2af9219316a216df746c00bfd76d3a05d
+n
+>look-gateway/src/main/java/com/whoiszxl/config/CorsConfig.java,3\9\392a2a2025f4d07ad0ed14f8cf147c47b073d0a4
+o
+?look-gateway/src/main/java/com/whoiszxl/GatewayApplication.java,9\6\96309a3088c7395b7aaa57c161e145b95e7a4391
